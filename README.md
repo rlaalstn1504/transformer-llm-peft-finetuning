@@ -45,25 +45,6 @@ Transformer의 구조를 그림과 예제로 이해하고, Decoder-only LLM의 �
 
 ---
 
-## 세부 시간표 (수업 진행 상황에 따라 바뀔 수 있음)
-
-| 일차 | 시간 | 주요 단원 | 학습 내용 | 방법 |
-|------|------|------------|------------|------|
-| 1일차 | 10:00–11:00 | Transformer 개요 | RNN과 Seq2Seq의 한계, Transformer의 등장 배경과 전체 구조 | 토론 |
-|  | 11:00–12:00 | Transformer 입력 표현 | Tokenization, Embedding, 위치 정보(Positional Encoding, RoPE) | 이론/실습 |
-|  | 13:00–14:00 | Attention과 Encoder | Self-Attention, Q·K·V, Multi-Head, Encoder 블록 구성 | 이론/실습 |
-|  | 14:00–15:00 | Transformer Decoder | Masked Attention, Cross-Attention, 학습과 추론의 차이 | 이론/실습 |
-|  | 15:00–16:00 | Decoder-only LLM | Transformer에서 GPT와 생성형 LLM으로의 발전, Qwen2.5 구조 분석 | 이론/실습 |
-|  | 16:00–17:00 | LLM 학습과 활용 | 사전학습, SFT, 선호도 정렬 / Prompt, RAG, Fine-tuning 비교 | 이론/문제풀이 |
-| 2일차 | 09:00–10:00 | 실습 환경 구성 | Hugging Face 실습 환경 설정, Qwen2.5 모델 실행, GPU 메모리 계산 | 이론/실습 |
-|  | 10:00–11:00 | SFT 데이터 구성 | 학습 데이터 품질 확인, 정제, 대화형 데이터 변환과 분리 | 이론/실습 |
-|  | 11:00–12:00 | Chat Template와 Tokenization | 대화 형식의 토큰화, input_ids·labels 구조, 답변 토큰만 학습 | 이론/실습 |
-|  | 13:00–14:00 | PEFT와 LoRA | Full Fine-tuning과 PEFT 비교, LoRA·QLoRA 원리와 구현 | 이론/실습 |
-|  | 14:00–15:00 | LoRA 모델 학습 | LoRA 설정과 `SFTTrainer` 기반 파인튜닝, 평가와 활용 | 실습 |
-|  | 15:00–16:00 | 종합평가 | 고객 문의 응답 형식 LoRA 파인튜닝 과제 | 실습/평가 |
-
----
-
 ## 실습 환경 준비
 
 본 과정의 모든 실습은 **Python 3.10 기반 Conda 가상환경**에서 진행됩니다.  
