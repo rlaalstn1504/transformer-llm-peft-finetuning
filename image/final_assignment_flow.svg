@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="260" viewBox="0 0 940 260" role="img" aria-labelledby="title desc">
+  <title id="title">최종과제 진행 흐름</title>
+  <desc id="desc">고객 문의 데이터를 학습 형식으로 바꾸고 분리한 뒤, 학습 전 평가(문의만과 형식 지시 프롬프트), LoRA 학습, 학습 후 평가, 설정을 바꿔 다시 학습 순서로 진행하며 네 가지 결과를 캡처한다. 준비 단계는 회색, 학습 전 단계는 파란색, 학습 후 결과는 보라색으로 표시한다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 22px; font-weight: 700; fill: #111827; }
+      .box-title { font-size: 15px; font-weight: 700; fill: #111827; }
+      .small { font-size: 12px; font-weight: 500; fill: #475569; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .caption { font-size: 12px; font-weight: 500; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="940" height="260" fill="#ffffff"/>
+  <text x="470" y="32" text-anchor="middle" class="title">최종과제: 고객 문의 응답 형식 LoRA 파인튜닝</text>
+
+  <rect x="15" y="70" width="140" height="100" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="85" y="106" text-anchor="middle" class="box-title">고객 문의 데이터</text>
+  <text x="85" y="132" text-anchor="middle" class="tiny">100건 · 5개 분류</text>
+  <line x1="157" y1="120" x2="167" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="169" y="70" width="140" height="100" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="239" y="106" text-anchor="middle" class="box-title">형식 변환·분리</text>
+  <text x="239" y="132" text-anchor="middle" class="tiny">학습 90 / 평가 10</text>
+  <text x="239" y="150" text-anchor="middle" class="tiny">분류마다 2건</text>
+  <line x1="311" y1="120" x2="321" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="323" y="70" width="140" height="100" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="393" y="106" text-anchor="middle" class="box-title" fill="#1d4ed8">학습 전 평가</text>
+  <text x="393" y="132" text-anchor="middle" class="tiny">문의만 vs 형식 지시</text>
+  <text x="393" y="150" text-anchor="middle" class="tiny">프롬프트</text>
+  <rect x="353" y="185" width="80" height="30" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="393" y="205" text-anchor="middle" class="small">캡처 1</text>
+  <line x1="393" y1="172" x2="393" y2="183" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="465" y1="120" x2="475" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="477" y="70" width="140" height="100" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="547" y="106" text-anchor="middle" class="box-title" fill="#1d4ed8">LoRA 학습</text>
+  <text x="547" y="132" text-anchor="middle" class="tiny">SFTTrainer</text>
+  <rect x="507" y="185" width="80" height="30" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="547" y="205" text-anchor="middle" class="small">캡처 2</text>
+  <line x1="547" y1="172" x2="547" y2="183" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="619" y1="120" x2="629" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="631" y="70" width="140" height="100" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="701" y="106" text-anchor="middle" class="box-title" fill="#5b21b6">학습 후 평가</text>
+  <text x="701" y="132" text-anchor="middle" class="tiny">세 방식 비교표</text>
+  <rect x="661" y="185" width="80" height="30" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="701" y="205" text-anchor="middle" class="small">캡처 3</text>
+  <line x1="701" y1="172" x2="701" y2="183" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="773" y1="120" x2="783" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="785" y="70" width="140" height="100" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="855" y="106" text-anchor="middle" class="box-title" fill="#5b21b6">설정 바꿔 재학습</text>
+  <text x="855" y="132" text-anchor="middle" class="tiny">r을 줄여 비교</text>
+  <rect x="815" y="185" width="80" height="30" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="855" y="205" text-anchor="middle" class="small">캡처 4</text>
+  <line x1="855" y1="172" x2="855" y2="183" stroke="#64748b" stroke-width="1.5"/>
+
+  <text x="470" y="245" text-anchor="middle" class="caption">출력 형식 -&gt; 분류: {배송|교환|환불|결제|계정} / 긴급도: {높음|보통|낮음} / 답변: ...</text>
+</svg>

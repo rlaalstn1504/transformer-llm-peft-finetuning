@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" role="img" aria-labelledby="title desc">
+  <title id="title">RNN과 Transformer의 처리 방식 비교</title>
+  <desc id="desc">RNN은 단어를 한 칸씩 순서대로 처리하고, Transformer는 모든 단어 쌍의 관계를 한 번에 계산한다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+    <marker id="arrow-blue" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#0f766e"/></marker>
+    <marker id="arrow-orange" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#ea580c"/></marker>
+    <marker id="arrow-purple" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker>
+
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 22px; font-weight: 700; fill: #111827; }
+      .subtitle { font-size: 14px; font-weight: 500; fill: #4b5563; }
+      .box-title { font-size: 15px; font-weight: 700; fill: #111827; }
+      .body { font-size: 13px; font-weight: 500; fill: #334155; }
+      .small { font-size: 12px; font-weight: 500; fill: #475569; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .mono { font-family: Consolas, 'D2Coding', monospace; font-size: 12px; font-weight: 600; fill: #1f2937; }
+      .lane { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect width="880" height="340" fill="#ffffff"/>
+  <text x="440" y="32" text-anchor="middle" class="title" >순서대로 읽기 vs 한 번에 보기</text>
+  <rect x="20" y="55" width="410" height="265" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="225" y="84" text-anchor="middle" class="box-title" >RNN: 한 칸씩 순서대로</text>
+  <rect x="45" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="80" y="202" text-anchor="middle" class="body" >나는</text>
+  <circle cx="80" cy="130" r="20" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="80" y="135" text-anchor="middle" class="small" >h1</text>
+  <line x1="80" y1="175" x2="80" y2="153" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <line x1="100" y1="130" x2="155" y2="130" stroke="#ea580c" stroke-width="2.4" marker-end="url(#arrow-orange)"/>
+  <text x="80" y="245" text-anchor="middle" class="tiny" >1단계</text>
+  <rect x="140" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="175" y="202" text-anchor="middle" class="body" >배가</text>
+  <circle cx="175" cy="130" r="20" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="175" y="135" text-anchor="middle" class="small" >h2</text>
+  <line x1="175" y1="175" x2="175" y2="153" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <line x1="195" y1="130" x2="250" y2="130" stroke="#ea580c" stroke-width="2.4" marker-end="url(#arrow-orange)"/>
+  <text x="175" y="245" text-anchor="middle" class="tiny" >2단계</text>
+  <rect x="235" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="270" y="202" text-anchor="middle" class="body" >너무</text>
+  <circle cx="270" cy="130" r="20" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="270" y="135" text-anchor="middle" class="small" >h3</text>
+  <line x1="270" y1="175" x2="270" y2="153" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <line x1="290" y1="130" x2="345" y2="130" stroke="#ea580c" stroke-width="2.4" marker-end="url(#arrow-orange)"/>
+  <text x="270" y="245" text-anchor="middle" class="tiny" >3단계</text>
+  <rect x="330" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="365" y="202" text-anchor="middle" class="body" >고프다</text>
+  <circle cx="365" cy="130" r="20" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="365" y="135" text-anchor="middle" class="small" >h4</text>
+  <line x1="365" y1="175" x2="365" y2="153" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="365" y="245" text-anchor="middle" class="tiny" >4단계</text>
+  <text x="225" y="278" text-anchor="middle" class="small" >h4를 계산하려면 h1 -&gt; h2 -&gt; h3을 차례로 기다려야 합니다.</text>
+  <text x="225" y="300" text-anchor="middle" class="small" >'나는'의 정보가 '고프다'까지 3단계를 거쳐 전달 -&gt; 점점 희미해짐</text>
+  <rect x="450" y="55" width="410" height="265" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="655" y="84" text-anchor="middle" class="box-title" >Transformer: 모든 쌍을 한 번에</text>
+  <path d="M 515 172 Q 562.5 92 610 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <path d="M 515 172 Q 610.0 48 705 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <path d="M 515 172 Q 657.5 4 800 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <path d="M 610 172 Q 657.5 92 705 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <path d="M 610 172 Q 705.0 48 800 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <path d="M 705 172 Q 752.5 92 800 172" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+  <rect x="480" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="515" y="202" text-anchor="middle" class="body" >나는</text>
+  <rect x="575" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="610" y="202" text-anchor="middle" class="body" >배가</text>
+  <rect x="670" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="705" y="202" text-anchor="middle" class="body" >너무</text>
+  <rect x="765" y="175" width="70" height="44" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="800" y="202" text-anchor="middle" class="body" >고프다</text>
+  <text x="655" y="245" text-anchor="middle" class="tiny" >1단계 (행렬곱 한 번)</text>
+  <text x="655" y="278" text-anchor="middle" class="small" >모든 단어 쌍의 관계를 동시에 계산 -&gt; GPU 병렬 처리에 유리</text>
+  <text x="655" y="300" text-anchor="middle" class="small" >어떤 두 단어도 한 번에 직접 연결 -&gt; 장거리 의존성에 강함</text>
+</svg>

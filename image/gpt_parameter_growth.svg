@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="610" viewBox="0 0 1120 610" role="img" aria-labelledby="title desc">
+  <title id="title">GPT-1부터 GPT-3까지 파라미터 수 증가</title>
+  <desc id="desc">GPT-1 1억 1700만 개, GPT-2 15억 개, GPT-3 1750억 개의 파라미터 수를 로그 눈금 막대그래프로 비교한다.</desc>
+  <style>
+    .title { font: 700 30px 'Noto Sans KR', Arial, sans-serif; fill: #183153; }
+    .subtitle { font: 500 18px 'Noto Sans KR', Arial, sans-serif; fill: #52657d; }
+    .axis { font: 500 16px 'Noto Sans KR', Arial, sans-serif; fill: #637791; }
+    .model { font: 700 22px 'Noto Sans KR', Arial, sans-serif; fill: #183153; text-anchor: middle; }
+    .value { font: 700 20px 'Noto Sans KR', Arial, sans-serif; fill: #183153; text-anchor: middle; }
+    .ratio { font: 700 18px 'Noto Sans KR', Arial, sans-serif; fill: #6042a6; text-anchor: middle; }
+    .note { font: 600 17px 'Noto Sans KR', Arial, sans-serif; fill: #3c526f; text-anchor: middle; }
+  </style>
+  <rect width="1120" height="610" fill="white"/>
+  <text x="560" y="38" class="title" text-anchor="middle">GPT-1에서 GPT-3까지: 파라미터 수는 약 1,500배</text>
+  <text x="560" y="68" class="subtitle" text-anchor="middle">세 모델은 모두 Decoder-only Transformer이며, 달라진 것은 주로 규모입니다.</text>
+
+  <rect x="100" y="96" width="920" height="390" rx="18" fill="#f8fbff" stroke="#d9e5f5" stroke-width="2"/>
+  <text x="126" y="125" class="axis">파라미터 수 (로그 눈금)</text>
+  <g stroke="#dbe6f3" stroke-width="2" stroke-dasharray="5 6">
+    <line x1="180" y1="450" x2="980" y2="450"/>
+    <line x1="180" y1="340" x2="980" y2="340"/>
+    <line x1="180" y1="230" x2="980" y2="230"/>
+    <line x1="180" y1="120" x2="980" y2="120"/>
+  </g>
+  <g class="axis" text-anchor="end">
+    <text x="164" y="456">1억</text>
+    <text x="164" y="346">10억</text>
+    <text x="164" y="236">100억</text>
+    <text x="164" y="126">1,000억</text>
+  </g>
+  <line x1="180" y1="450" x2="980" y2="450" stroke="#90a6c2" stroke-width="2"/>
+
+  <rect x="238" y="442" width="118" height="8" rx="4" fill="#60a5fa"/>
+  <circle cx="297" cy="442" r="9" fill="#2563eb"/>
+  <text x="297" y="416" class="value">1.17억</text>
+  <text x="297" y="493" class="model">GPT-1</text>
+  <text x="297" y="519" class="axis" text-anchor="middle">2018</text>
+
+  <rect x="501" y="318" width="118" height="132" rx="10" fill="#a78bfa"/>
+  <text x="560" y="298" class="value">15억</text>
+  <text x="560" y="493" class="model">GPT-2</text>
+  <text x="560" y="519" class="axis" text-anchor="middle">2019</text>
+
+  <rect x="764" y="106" width="118" height="344" rx="10" fill="#f97362"/>
+  <text x="823" y="91" class="value">1,750억</text>
+  <text x="823" y="493" class="model">GPT-3</text>
+  <text x="823" y="519" class="axis" text-anchor="middle">2020</text>
+
+  <g fill="none" stroke="#8b6bd6" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M370 365 H480"/>
+    <path d="M633 235 H743"/>
+  </g>
+  <rect x="380" y="337" width="90" height="34" rx="17" fill="#f0eaff"/>
+  <text x="425" y="360" class="ratio">약 13배</text>
+  <rect x="638" y="207" width="100" height="34" rx="17" fill="#f0eaff"/>
+  <text x="688" y="230" class="ratio">약 117배</text>
+
+  <rect x="300" y="548" width="520" height="40" rx="20" fill="#eef5ff"/>
+  <text x="560" y="574" class="note">그래프의 막대 높이는 큰 규모 차이를 함께 보기 위한 로그 눈금입니다.</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b6bd6"/>
+    </marker>
+  </defs>
+</svg>

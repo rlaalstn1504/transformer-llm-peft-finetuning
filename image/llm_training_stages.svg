@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="330" viewBox="0 0 920 330" role="img" aria-labelledby="title desc">
+  <title id="title">LLM 학습 3단계</title>
+  <desc id="desc">사전학습으로 Base 모델을 만들고, SFT로 지시를 따르는 Instruct 모델을 만든 뒤, 선호도 정렬로 더 도움되고 안전한 모델을 만든다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+    <marker id="arrow-blue" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#2563eb"/></marker>
+    <marker id="arrow-green" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#0f766e"/></marker>
+    <marker id="arrow-orange" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#ea580c"/></marker>
+    <marker id="arrow-purple" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker>
+
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 22px; font-weight: 700; fill: #111827; }
+      .subtitle { font-size: 14px; font-weight: 500; fill: #4b5563; }
+      .box-title { font-size: 15px; font-weight: 700; fill: #111827; }
+      .body { font-size: 13px; font-weight: 500; fill: #334155; }
+      .small { font-size: 12px; font-weight: 500; fill: #475569; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .mono { font-family: Consolas, 'D2Coding', monospace; font-size: 12px; font-weight: 600; fill: #1f2937; }
+      .lane { font-size: 15px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect width="920" height="330" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" class="title" >대화형 LLM이 만들어지는 세 단계</text>
+  <rect x="25" y="60" width="260" height="175" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="155" y="90" text-anchor="middle" class="box-title" >1. 사전학습</text>
+  <text x="155" y="110" text-anchor="middle" class="small" >Pre-training</text>
+  <text x="45" y="142" text-anchor="start" class="body" >데이터: 수조 토큰의 웹·책·코드</text>
+  <text x="45" y="168" text-anchor="start" class="body" >목표: 다음 토큰 예측</text>
+  <text x="45" y="194" text-anchor="start" class="body" >비용: GPU 수천 개 × 수 주</text>
+  <rect x="80" y="248" width="150" height="36" rx="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="155" y="271" text-anchor="middle" class="box-title" >Base 모델</text>
+  <line x1="155" y1="235" x2="155" y2="246" stroke="#2563eb" stroke-width="2"/>
+  <line x1="287" y1="147" x2="327" y2="147" stroke="#64748b" stroke-width="2.6" marker-end="url(#arrow-gray)"/>
+  <rect x="330" y="60" width="260" height="175" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2.5"/>
+  <text x="460" y="90" text-anchor="middle" class="box-title" >2. 지도 미세조정</text>
+  <text x="460" y="110" text-anchor="middle" class="small" >SFT</text>
+  <text x="350" y="142" text-anchor="start" class="body" >데이터: (지시, 모범 답변) 쌍</text>
+  <text x="350" y="168" text-anchor="start" class="body" >목표: 답변 토큰 예측</text>
+  <text x="350" y="194" text-anchor="start" class="body" >비용: 작음 (LoRA면 GPU 1장)</text>
+  <rect x="385" y="248" width="150" height="36" rx="18" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="460" y="271" text-anchor="middle" class="box-title" >Instruct 모델</text>
+  <line x1="460" y1="235" x2="460" y2="246" stroke="#0f766e" stroke-width="2"/>
+  <line x1="592" y1="147" x2="632" y2="147" stroke="#64748b" stroke-width="2.6" marker-end="url(#arrow-gray)"/>
+  <rect x="635" y="60" width="260" height="175" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="765" y="90" text-anchor="middle" class="box-title" >3. 선호도 정렬</text>
+  <text x="765" y="110" text-anchor="middle" class="small" >RLHF · DPO</text>
+  <text x="655" y="142" text-anchor="start" class="body" >데이터: (선호 답변, 비선호 답변)</text>
+  <text x="655" y="168" text-anchor="start" class="body" >목표: 선호 답변 확률 높이기</text>
+  <text x="655" y="194" text-anchor="start" class="body" >비용: 중간</text>
+  <rect x="690" y="248" width="150" height="36" rx="18" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="765" y="271" text-anchor="middle" class="box-title" >정렬된 모델</text>
+  <line x1="765" y1="235" x2="765" y2="246" stroke="#7c3aed" stroke-width="2"/>
+  <text x="460" y="312" text-anchor="middle" class="small" >2일차 실습 범위: 공개 Instruct 모델(Qwen2.5)에 우리 데이터로 2단계 SFT를 LoRA로 추가 수행</text>
+</svg>

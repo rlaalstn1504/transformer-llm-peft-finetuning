@@ -1,0 +1,20 @@
+# Python 3.10
+# NVIDIA GPU(CUDA 12.1) 환경에서는 아래 인덱스에서 CUDA용 PyTorch가 설치됩니다.
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+transformers==4.57.6
+tokenizers==0.22.2
+huggingface-hub==0.36.2
+peft==0.20.0
+trl==0.25.1
+datasets==4.8.4
+accelerate==1.14.0
+bitsandbytes==0.50.2
+sentencepiece==0.2.1
+safetensors
+numpy==1.26.4
+pandas==2.3.3
+matplotlib==3.10.8
+koreanize-matplotlib==0.1.1
+ipykernel
+ipywidgets==8.1.8

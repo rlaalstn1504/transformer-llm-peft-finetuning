@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="420" viewBox="0 0 1180 420" role="img" aria-labelledby="title desc">
+  <title id="title">Qwen ChatML의 input_ids, attention_mask, labels와 패딩</title>
+  <desc id="desc">대화의 실제 토큰은 attention_mask가 1이고 오른쪽 패딩은 0이다. labels에서는 지침, 질문, 답변 시작 표시와 패딩을 -100으로 가리고 답변과 종료 토큰을 학습한다. 상자는 여러 토큰을 구간별로 묶은 표시다.</desc>
+  <style>
+    text { font-family: 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif; fill: #334155; }
+    .title { font-size: 26px; font-weight: 700; }
+    .body { font-size: 16px; }
+    .small { font-size: 15px; }
+    .mono { font-family: Consolas, monospace; font-size: 14px; }
+  </style>
+  <rect width="1180" height="420" fill="white"/>
+  <text x="590" y="32" text-anchor="middle" class="title">대화 전체를 입력하고, 답변과 종료 토큰을 학습합니다</text>
+  <text x="590" y="58" text-anchor="middle" class="small">상자는 여러 토큰을 역할별 구간으로 묶은 표시입니다.</text>
+  <text x="12" y="116" class="small">input_ids</text>
+  <text x="12" y="201" class="small">attention_mask</text>
+  <text x="12" y="257" class="small">labels</text>
+<rect x="130" y="82" width="175" height="68" rx="8" fill="#f8fafc" stroke="#64748b"/>
+<text x="217.5" y="109" text-anchor="middle" class="mono">&lt;|im_start|&gt;system</text>
+<text x="217.5" y="135" text-anchor="middle" class="small">역할 지침 + &lt;|im_end|&gt;</text>
+<line x1="217.5" y1="152" x2="217.5" y2="176" stroke="#64748b"/>
+<rect x="130" y="178" width="175" height="36" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+<text x="217.5" y="201" text-anchor="middle" class="body">모두 1</text>
+<line x1="217.5" y1="216" x2="217.5" y2="232" stroke="#64748b"/>
+<rect x="130" y="234" width="175" height="36" rx="8" fill="#fef2f2" stroke="#ef4444"/>
+<text x="217.5" y="257" text-anchor="middle" class="body">-100</text>
+<rect x="313" y="82" width="205" height="68" rx="8" fill="#f8fafc" stroke="#64748b"/>
+<text x="415.5" y="109" text-anchor="middle" class="mono">&lt;|im_start|&gt;user</text>
+<text x="415.5" y="135" text-anchor="middle" class="small">질문 + &lt;|im_end|&gt;</text>
+<line x1="415.5" y1="152" x2="415.5" y2="176" stroke="#64748b"/>
+<rect x="313" y="178" width="205" height="36" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+<text x="415.5" y="201" text-anchor="middle" class="body">모두 1</text>
+<line x1="415.5" y1="216" x2="415.5" y2="232" stroke="#64748b"/>
+<rect x="313" y="234" width="205" height="36" rx="8" fill="#fef2f2" stroke="#ef4444"/>
+<text x="415.5" y="257" text-anchor="middle" class="body">-100</text>
+<rect x="526" y="82" width="205" height="68" rx="8" fill="#f8fafc" stroke="#64748b"/>
+<text x="628.5" y="109" text-anchor="middle" class="mono">&lt;|im_start|&gt;assistant</text>
+<text x="628.5" y="135" text-anchor="middle" class="small">답변 시작 표시 + 줄바꿈</text>
+<line x1="628.5" y1="152" x2="628.5" y2="176" stroke="#64748b"/>
+<rect x="526" y="178" width="205" height="36" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+<text x="628.5" y="201" text-anchor="middle" class="body">모두 1</text>
+<line x1="628.5" y1="216" x2="628.5" y2="232" stroke="#64748b"/>
+<rect x="526" y="234" width="205" height="36" rx="8" fill="#fef2f2" stroke="#ef4444"/>
+<text x="628.5" y="257" text-anchor="middle" class="body">-100</text>
+<rect x="739" y="82" width="120" height="68" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+<text x="799" y="109" text-anchor="middle" class="body">모범 답변</text>
+<text x="799" y="135" text-anchor="middle" class="small">답변 내용</text>
+<line x1="799" y1="152" x2="799" y2="176" stroke="#64748b"/>
+<rect x="739" y="178" width="120" height="36" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+<text x="799" y="201" text-anchor="middle" class="body">모두 1</text>
+<line x1="799" y1="216" x2="799" y2="232" stroke="#64748b"/>
+<rect x="739" y="234" width="120" height="36" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+<text x="799" y="257" text-anchor="middle" class="body">원래 토큰 ID</text>
+<rect x="867" y="82" width="145" height="68" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+<text x="939.5" y="109" text-anchor="middle" class="mono">&lt;|im_end|&gt;</text>
+<text x="939.5" y="135" text-anchor="middle" class="small">턴 종료 + 줄바꿈</text>
+<line x1="939.5" y1="152" x2="939.5" y2="176" stroke="#64748b"/>
+<rect x="867" y="178" width="145" height="36" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+<text x="939.5" y="201" text-anchor="middle" class="body">모두 1</text>
+<line x1="939.5" y1="216" x2="939.5" y2="232" stroke="#64748b"/>
+<rect x="867" y="234" width="145" height="36" rx="8" fill="#ecfdf5" stroke="#10b981"/>
+<text x="939.5" y="257" text-anchor="middle" class="body">원래 토큰 ID</text>
+<rect x="1020" y="82" width="145" height="68" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/>
+<text x="1092.5" y="109" text-anchor="middle" class="mono">&lt;|endoftext|&gt;</text>
+<text x="1092.5" y="135" text-anchor="middle" class="small">오른쪽 패딩</text>
+<line x1="1092.5" y1="152" x2="1092.5" y2="176" stroke="#94a3b8" stroke-dasharray="4 3"/>
+<rect x="1020" y="178" width="145" height="36" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="4 3"/>
+<text x="1092.5" y="201" text-anchor="middle" class="body">모두 0</text>
+<line x1="1092.5" y1="216" x2="1092.5" y2="232" stroke="#94a3b8" stroke-dasharray="4 3"/>
+<rect x="1020" y="234" width="145" height="36" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-dasharray="4 3"/>
+<text x="1092.5" y="257" text-anchor="middle" class="body">-100</text>
+<text x="130" y="316" class="body">파란 칸(1) / 회색 칸(0): 실제 토큰은 보고, 패딩은 보지 않습니다.</text>
+<text x="130" y="340" class="body">빨간 칸(-100): 지침·질문·답변 시작 표시와 패딩은 손실 계산에서 제외합니다.</text>
+<text x="130" y="364" class="body">초록 칸(ID): 답변 내용과 &lt;|im_end|&gt;를 맞히도록 학습합니다.</text>
+<text x="130" y="397" class="small">패딩은 짧은 예시의 길이를 맞출 때 추가합니다. 모델 내부에서 labels를 한 칸 밀어 다음 토큰과 비교합니다.</text>
+</svg>

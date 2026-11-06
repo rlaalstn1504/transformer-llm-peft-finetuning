@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+  <title id="title">Add &amp; Norm과 Feed Forward가 Encoder 블록 안에서 하는 일</title>
+  <desc id="desc">왼쪽: 서브층 입력 x와 출력 f(x)를 더하는 잔차 연결 뒤 LayerNorm으로 정규화한다. 오른쪽: Feed Forward Network는 각 단어 벡터를 d_model에서 4배로 늘렸다가 다시 줄이며, 단어끼리 정보를 섞지 않고 같은 가중치로 독립적으로 가공한다.</desc>
+  <defs>
+    <marker id="arrow-gray2" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+    <marker id="arrow-purple2" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker>
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 19px; font-weight: 700; fill: #111827; }
+      .panel-title { font-size: 15px; font-weight: 700; fill: #1d4ed8; }
+      .box-title { font-size: 14px; font-weight: 700; fill: #111827; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .small { font-size: 13px; font-weight: 600; fill: #334155; }
+      .mono { font-family: Consolas, 'D2Coding', monospace; font-size: 10.5px; font-weight: 600; fill: #475569; }
+      .note { font-size: 12.5px; font-weight: 600; fill: #5b21b6; }
+      .caption { font-size: 12.5px; font-weight: 500; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="900" height="480" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" class="title">Add &amp; Norm과 Feed Forward: Encoder 블록 안에서 하는 일</text>
+
+  <line x1="450" y1="52" x2="450" y2="452" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <!-- ===== LEFT PANEL: Add & Norm (skip connection 형태) ===== -->
+  <text x="217" y="72" text-anchor="middle" class="panel-title">① Add &amp; Norm — 잔차 연결 + 정규화</text>
+
+  <rect x="125" y="79" width="130" height="42" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="190" y="96" text-anchor="middle" class="small">x</text>
+  <text x="190" y="113" text-anchor="middle" class="tiny">서브층 입력</text>
+
+  <line x1="190" y1="121" x2="190" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray2)"/>
+
+  <rect x="115" y="153" width="150" height="58" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="190" y="176" text-anchor="middle" class="small" fill="#1d4ed8">서브층 f(·)</text>
+  <text x="190" y="196" text-anchor="middle" class="tiny">(예: Attention)</text>
+
+  <!-- skip connection: x가 서브층을 건너뛰고 그대로 전달됨 -->
+  <path d="M 255 100 C 335 100, 335 252, 209 252" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#arrow-gray2)"/>
+  <text x="347" y="166" text-anchor="middle" class="small" fill="#475569">x</text>
+  <text x="347" y="182" text-anchor="middle" class="tiny">(그대로</text>
+  <text x="347" y="196" text-anchor="middle" class="tiny">건너뛰어 전달)</text>
+
+  <line x1="190" y1="211" x2="190" y2="233" stroke="#3b82f6" stroke-width="2.2" marker-end="url(#arrow-purple2)"/>
+  <text x="152" y="226" text-anchor="middle" class="tiny" fill="#1d4ed8">f(x)</text>
+
+  <circle cx="190" cy="252" r="16" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="190" y="258" text-anchor="middle" font-size="17" font-weight="700" fill="#5b21b6">+</text>
+
+  <line x1="190" y1="268" x2="190" y2="294" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#arrow-purple2)"/>
+
+  <rect x="115" y="297" width="150" height="46" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="190" y="317" text-anchor="middle" class="small" fill="#5b21b6">LayerNorm</text>
+  <text x="190" y="334" text-anchor="middle" class="tiny">x + f(x)의 분포를 정규화</text>
+
+  <line x1="190" y1="343" x2="190" y2="363" stroke="#64748b" stroke-width="2.2" marker-end="url(#arrow-gray2)"/>
+
+  <rect x="115" y="366" width="150" height="38" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="190" y="382" text-anchor="middle" class="small">출력</text>
+  <text x="190" y="397" text-anchor="middle" class="tiny">다음 단계로 전달</text>
+
+  <text x="217" y="424" text-anchor="middle" class="caption">x는 서브층을 거치지 않고도 그대로 다음으로 전달되고,</text>
+  <text x="217" y="440" text-anchor="middle" class="caption">서브층 결과 f(x)와 더해진 뒤 정규화됩니다.</text>
+
+  <!-- ===== RIGHT PANEL: Feed Forward Network ===== -->
+  <text x="670" y="72" text-anchor="middle" class="panel-title">② Feed Forward — 단어별 독립 가공</text>
+
+  <g>
+    <rect x="500" y="92" width="70" height="42" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <text x="535" y="110" text-anchor="middle" class="tiny">단어1</text>
+    <text x="535" y="126" text-anchor="middle" class="mono">[d_model]</text>
+
+    <rect x="635" y="92" width="70" height="42" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <text x="670" y="110" text-anchor="middle" class="tiny">단어2</text>
+    <text x="670" y="126" text-anchor="middle" class="mono">[d_model]</text>
+
+    <rect x="770" y="92" width="70" height="42" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <text x="805" y="110" text-anchor="middle" class="tiny">단어3</text>
+    <text x="805" y="126" text-anchor="middle" class="mono">[d_model]</text>
+  </g>
+
+  <line x1="535" y1="134" x2="535" y2="165" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+  <line x1="670" y1="134" x2="670" y2="165" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+  <line x1="805" y1="134" x2="805" y2="165" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+
+  <!-- 세 단어가 각자 독립적으로 통과하는, d_model -> 4*d_model -> d_model 모양의 "허리 넓은" 변환. 모양 자체가 확장/축소를 보여줍니다. -->
+  <g>
+    <!-- 단어1 -->
+    <path d="M 510 165 L 560 165 L 560 192 L 590 213 L 590 270 L 560 291 L 560 318 L 510 318 L 510 291 L 480 270 L 480 213 L 510 192 Z"
+          fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="535" y="182" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+    <path d="M 523 226 Q 533 226 535 230 Q 537 234 547 234" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/>
+    <text x="535" y="250" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">2048</text>
+    <text x="535" y="308" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+
+    <!-- 단어2 (중앙: 설명 라벨 포함) -->
+    <path d="M 645 165 L 695 165 L 695 192 L 725 213 L 725 270 L 695 291 L 695 318 L 645 318 L 645 291 L 615 270 L 615 213 L 645 192 Z"
+          fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="670" y="182" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+    <path d="M 658 224 Q 668 224 670 228 Q 672 232 682 232" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/>
+    <text x="670" y="248" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">2048 (4×)</text>
+    <text x="670" y="261" text-anchor="middle" class="tiny" fill="#5b21b6" font-weight="700">GELU 비선형</text>
+    <text x="670" y="308" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+
+    <!-- 단어3 -->
+    <path d="M 780 165 L 830 165 L 830 192 L 860 213 L 860 270 L 830 291 L 830 318 L 780 318 L 780 291 L 750 270 L 750 213 L 780 192 Z"
+          fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="805" y="182" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+    <path d="M 793 226 Q 803 226 805 230 Q 807 234 817 234" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/>
+    <text x="805" y="250" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">2048</text>
+    <text x="805" y="308" text-anchor="middle" class="tiny" fill="#1d4ed8" font-weight="700">512</text>
+  </g>
+
+  <line x1="535" y1="318" x2="535" y2="340" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+  <line x1="670" y1="318" x2="670" y2="340" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+  <line x1="805" y1="318" x2="805" y2="340" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-gray2)"/>
+
+  <g>
+    <rect x="500" y="343" width="70" height="42" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="535" y="361" text-anchor="middle" class="tiny" fill="#5b21b6">출력1</text>
+    <text x="535" y="377" text-anchor="middle" class="mono">[d_model]</text>
+
+    <rect x="635" y="343" width="70" height="42" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="670" y="361" text-anchor="middle" class="tiny" fill="#5b21b6">출력2</text>
+    <text x="670" y="377" text-anchor="middle" class="mono">[d_model]</text>
+
+    <rect x="770" y="343" width="70" height="42" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+    <text x="805" y="361" text-anchor="middle" class="tiny" fill="#5b21b6">출력3</text>
+    <text x="805" y="377" text-anchor="middle" class="mono">[d_model]</text>
+  </g>
+
+  <text x="670" y="418" text-anchor="middle" class="caption">d_model(512)을 4배(2048)로 늘려 비선형 활성화로 가공한 뒤 다시 512로 줄이며,</text>
+  <text x="670" y="436" text-anchor="middle" class="caption">Attention과 달리 단어끼리 섞이지 않고 같은 가중치로 독립적으로 가공합니다.</text>
+</svg>

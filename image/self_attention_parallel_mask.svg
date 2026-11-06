@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+  <rect width="1500" height="900" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#16a34a"/>
+    </marker>
+    <pattern id="masked" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#f1f5f9"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#cbd5e1" stroke-width="3"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <g font-family="Noto Sans CJK KR, Apple SD Gothic Neo, Arial, sans-serif">
+    <text x="750" y="45" text-anchor="middle" font-size="31" font-weight="800" fill="#0f172a">학습 시 Self-Attention: 미래는 가리고, 모든 위치는 함께 계산</text>
+    <text x="750" y="76" text-anchor="middle" font-size="17" fill="#475569">순환 상태를 한 칸씩 전달하지 않고, 완성된 학습 문장에 Causal Mask를 적용합니다.</text>
+
+    <!-- Completed training sequence -->
+    <g filter="url(#shadow)">
+      <rect x="35" y="103" width="1430" height="112" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    </g>
+    <text x="70" y="138" font-size="18" font-weight="800" fill="#334155">완성된 학습 문장</text>
+    <text x="70" y="171" font-size="16" fill="#64748b">5개 토큰이 이미 준비되어 있음</text>
+    <text x="70" y="197" font-size="14" fill="#64748b">각 위치의 다음 토큰 정답도 알고 있음</text>
+
+    <g font-size="19" font-weight="700" text-anchor="middle">
+      <g transform="translate(390,127)">
+        <rect width="165" height="62" rx="13" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+        <text x="82.5" y="29" fill="#1e40af">안전</text>
+        <text x="82.5" y="51" font-size="13" font-weight="500" fill="#64748b">위치 1</text>
+      </g>
+      <g transform="translate(570,127)">
+        <rect width="165" height="62" rx="13" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+        <text x="82.5" y="29" fill="#1e40af">점검</text>
+        <text x="82.5" y="51" font-size="13" font-weight="500" fill="#64748b">위치 2</text>
+      </g>
+      <g transform="translate(750,127)">
+        <rect width="165" height="62" rx="13" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+        <text x="82.5" y="29" fill="#1e40af">보고서를</text>
+        <text x="82.5" y="51" font-size="13" font-weight="500" fill="#64748b">위치 3</text>
+      </g>
+      <g transform="translate(930,127)">
+        <rect width="165" height="62" rx="13" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+        <text x="82.5" y="29" fill="#1e40af">요약해</text>
+        <text x="82.5" y="51" font-size="13" font-weight="500" fill="#64748b">위치 4</text>
+      </g>
+      <g transform="translate(1110,127)">
+        <rect width="165" height="62" rx="13" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+        <text x="82.5" y="29" fill="#1e40af">줘</text>
+        <text x="82.5" y="51" font-size="13" font-weight="500" fill="#64748b">위치 5</text>
+      </g>
+    </g>
+
+    <line x1="750" y1="215" x2="750" y2="244" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- Parallel causal attention matrix -->
+    <g filter="url(#shadow)">
+      <rect x="35" y="250" width="1430" height="445" rx="20" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    </g>
+    <text x="70" y="286" font-size="21" font-weight="800" fill="#0f172a">각 위치가 참고할 수 있는 토큰</text>
+    <rect x="675" y="267" width="22" height="22" rx="5" fill="#bfdbfe" stroke="#60a5fa"/>
+    <text x="707" y="284" font-size="14" fill="#475569">현재·이전 토큰</text>
+    <rect x="840" y="267" width="22" height="22" rx="5" fill="url(#masked)" stroke="#cbd5e1"/>
+    <text x="872" y="284" font-size="14" fill="#475569">미래 토큰 MASK</text>
+    <text x="1160" y="286" font-size="18" font-weight="800" fill="#166534">각 위치의 다음 토큰 예측</text>
+
+    <!-- Column headers -->
+    <g font-size="15" font-weight="700" text-anchor="middle" fill="#334155">
+      <text x="420" y="326">안전</text>
+      <text x="550" y="326">점검</text>
+      <text x="680" y="326">보고서를</text>
+      <text x="810" y="326">요약해</text>
+      <text x="940" y="326">줘</text>
+    </g>
+    <text x="335" y="326" text-anchor="end" font-size="14" fill="#64748b">Key 위치 →</text>
+
+    <!-- One-operation bracket -->
+    <path d="M218 342 H202 Q190 342 190 354 V641 Q190 653 202 653 H218" fill="none" stroke="#16a34a" stroke-width="4"/>
+    <text x="154" y="500" text-anchor="middle" transform="rotate(-90 154 500)" font-size="18" font-weight="800" fill="#15803d">5개 Query 위치를 한 번에 계산</text>
+
+    <!-- Row labels -->
+    <g font-size="16" font-weight="700" text-anchor="end" fill="#334155">
+      <text x="335" y="382">Q₁ · 안전</text>
+      <text x="335" y="442">Q₂ · 점검</text>
+      <text x="335" y="502">Q₃ · 보고서를</text>
+      <text x="335" y="562">Q₄ · 요약해</text>
+      <text x="335" y="622">Q₅ · 줘</text>
+    </g>
+
+    <!-- Attention cells: row 1 -->
+    <g text-anchor="middle" font-size="14" font-weight="700">
+      <rect x="355" y="342" width="130" height="52" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/><text x="420" y="374" fill="#1e3a8a">참고</text>
+      <rect x="485" y="342" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="550" y="374" fill="#64748b">MASK</text>
+      <rect x="615" y="342" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="680" y="374" fill="#64748b">MASK</text>
+      <rect x="745" y="342" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="810" y="374" fill="#64748b">MASK</text>
+      <rect x="875" y="342" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="940" y="374" fill="#64748b">MASK</text>
+
+      <!-- row 2 -->
+      <rect x="355" y="402" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="420" y="434" fill="#1e3a8a">참고</text>
+      <rect x="485" y="402" width="130" height="52" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/><text x="550" y="434" fill="#1e3a8a">참고</text>
+      <rect x="615" y="402" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="680" y="434" fill="#64748b">MASK</text>
+      <rect x="745" y="402" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="810" y="434" fill="#64748b">MASK</text>
+      <rect x="875" y="402" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="940" y="434" fill="#64748b">MASK</text>
+
+      <!-- row 3 -->
+      <rect x="355" y="462" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="420" y="494" fill="#1e3a8a">참고</text>
+      <rect x="485" y="462" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="550" y="494" fill="#1e3a8a">참고</text>
+      <rect x="615" y="462" width="130" height="52" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/><text x="680" y="494" fill="#1e3a8a">참고</text>
+      <rect x="745" y="462" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="810" y="494" fill="#64748b">MASK</text>
+      <rect x="875" y="462" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="940" y="494" fill="#64748b">MASK</text>
+
+      <!-- row 4 -->
+      <rect x="355" y="522" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="420" y="554" fill="#1e3a8a">참고</text>
+      <rect x="485" y="522" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="550" y="554" fill="#1e3a8a">참고</text>
+      <rect x="615" y="522" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="680" y="554" fill="#1e3a8a">참고</text>
+      <rect x="745" y="522" width="130" height="52" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/><text x="810" y="554" fill="#1e3a8a">참고</text>
+      <rect x="875" y="522" width="130" height="52" fill="url(#masked)" stroke="#ffffff" stroke-width="2"/><text x="940" y="554" fill="#64748b">MASK</text>
+
+      <!-- row 5 -->
+      <rect x="355" y="582" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="420" y="614" fill="#1e3a8a">참고</text>
+      <rect x="485" y="582" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="550" y="614" fill="#1e3a8a">참고</text>
+      <rect x="615" y="582" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="680" y="614" fill="#1e3a8a">참고</text>
+      <rect x="745" y="582" width="130" height="52" fill="#bfdbfe" stroke="#ffffff" stroke-width="2"/><text x="810" y="614" fill="#1e3a8a">참고</text>
+      <rect x="875" y="582" width="130" height="52" fill="#93c5fd" stroke="#ffffff" stroke-width="2"/><text x="940" y="614" fill="#1e3a8a">참고</text>
+    </g>
+
+    <text x="680" y="668" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">QKᵀ 점수 행렬 (5, 5)에 Causal Mask를 더한 모습</text>
+
+    <!-- Predictions produced in parallel -->
+    <g>
+      <g transform="translate(1090,342)"><rect width="330" height="52" rx="11" fill="#dcfce7" stroke="#4ade80"/><text x="22" y="33" font-size="15" fill="#166534">위치 1 출력</text><text x="190" y="33" font-size="18" font-weight="800" fill="#166534">→ 점검</text></g>
+      <g transform="translate(1090,402)"><rect width="330" height="52" rx="11" fill="#dcfce7" stroke="#4ade80"/><text x="22" y="33" font-size="15" fill="#166534">위치 2 출력</text><text x="190" y="33" font-size="18" font-weight="800" fill="#166534">→ 보고서를</text></g>
+      <g transform="translate(1090,462)"><rect width="330" height="52" rx="11" fill="#dcfce7" stroke="#4ade80"/><text x="22" y="33" font-size="15" fill="#166534">위치 3 출력</text><text x="190" y="33" font-size="18" font-weight="800" fill="#166534">→ 요약해</text></g>
+      <g transform="translate(1090,522)"><rect width="330" height="52" rx="11" fill="#dcfce7" stroke="#4ade80"/><text x="22" y="33" font-size="15" fill="#166534">위치 4 출력</text><text x="190" y="33" font-size="18" font-weight="800" fill="#166534">→ 줘</text></g>
+      <g transform="translate(1090,582)"><rect width="330" height="52" rx="11" fill="#dcfce7" stroke="#4ade80"/><text x="22" y="33" font-size="15" fill="#166534">위치 5 출력</text><text x="190" y="33" font-size="18" font-weight="800" fill="#166534">→ &lt;EOS&gt;</text></g>
+    </g>
+    <g stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)">
+      <line x1="1005" y1="368" x2="1078" y2="368"/>
+      <line x1="1005" y1="428" x2="1078" y2="428"/>
+      <line x1="1005" y1="488" x2="1078" y2="488"/>
+      <line x1="1005" y1="548" x2="1078" y2="548"/>
+      <line x1="1005" y1="608" x2="1078" y2="608"/>
+    </g>
+
+    <!-- Training vs generation clarification -->
+    <g filter="url(#shadow)">
+      <rect x="35" y="725" width="850" height="135" rx="18" fill="#f0fdf4" stroke="#4ade80" stroke-width="1.5"/>
+      <rect x="915" y="725" width="550" height="135" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    </g>
+    <text x="70" y="763" font-size="20" font-weight="800" fill="#166534">학습: 순환 대기 없음</text>
+    <text x="70" y="797" font-size="17" fill="#334155">완성된 문장 전체로 Q·K·V와 (5, 5) 점수 행렬을 한 번에 계산합니다.</text>
+    <text x="70" y="827" font-size="17" fill="#334155">미래 토큰은 입력에서 지우지 않고, 위치별 Attention 연결만 MASK 처리합니다.</text>
+
+    <text x="950" y="763" font-size="20" font-weight="800" fill="#334155">생성: 다음 토큰은 아직 없음</text>
+    <text x="950" y="797" font-size="17" fill="#475569">방금 선택한 토큰을 다음 입력에 추가해야 하므로</text>
+    <text x="950" y="827" font-size="17" fill="#475569">새 토큰 생성은 한 토큰씩 반복합니다.</text>
+  </g>
+</svg>

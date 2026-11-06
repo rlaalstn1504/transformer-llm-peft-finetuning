@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 310" width="1040" height="310" font-family="'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif">
+  <title>softmax 계산 3단계</title>
+  <desc>점수 z를 지수 함수에 통과시키고 합으로 나누어 합이 1인 확률을 만든다. 예시 점수는 2.0, 1.0, 0.1이다.</desc>
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font-size: 17px; font-weight: 700; fill: #0f172a; }
+      .box-title { font-size: 15px; font-weight: 700; }
+      .mono { font-family: 'Consolas', 'DejaVu Sans Mono', monospace; font-size: 17px; font-weight: 700; }
+      .tiny { font-size: 12px; }
+      .caption { font-size: 13px; fill: #475569; }
+      .val { font-family: 'Consolas', 'DejaVu Sans Mono', monospace; font-size: 14px; font-weight: 700; }
+    </style>
+  </defs>
+  <text x="520" y="30" text-anchor="middle" class="title">softmax는 점수를 "합이 1인 확률"로 바꾸는 3단계 계산입니다</text>
+  <rect x="20" y="50" width="300" height="230" rx="12" fill="#f8fafc" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="170" y="78" text-anchor="middle" class="box-title" fill="#334155">① 점수 z (음수 가능)</text>
+  <line x1="45" y1="260" x2="295" y2="260" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="70" y="130.0" width="50" height="130.0" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="95" y="122.0" text-anchor="middle" class="val" fill="#1e293b">2.0</text>
+  <text x="95" y="280" text-anchor="middle" class="tiny" fill="#475569">A</text>
+  <rect x="145" y="195.0" width="50" height="65.0" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="170" y="187.0" text-anchor="middle" class="val" fill="#1e293b">1.0</text>
+  <text x="170" y="280" text-anchor="middle" class="tiny" fill="#475569">B</text>
+  <rect x="220" y="253.5" width="50" height="6.5" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="245" y="245.5" text-anchor="middle" class="val" fill="#1e293b">0.1</text>
+  <text x="245" y="280" text-anchor="middle" class="tiny" fill="#475569">C</text>
+  <rect x="370" y="50" width="300" height="230" rx="12" fill="#f8fafc" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="520" y="78" text-anchor="middle" class="box-title" fill="#334155">② e^z (항상 양수)</text>
+  <line x1="395" y1="260" x2="645" y2="260" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="420" y="130.0" width="50" height="130.0" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="445" y="122.0" text-anchor="middle" class="val" fill="#1e293b">7.39</text>
+  <text x="445" y="280" text-anchor="middle" class="tiny" fill="#475569">A</text>
+  <rect x="495" y="212.2" width="50" height="47.8" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="520" y="204.2" text-anchor="middle" class="val" fill="#1e293b">2.72</text>
+  <text x="520" y="280" text-anchor="middle" class="tiny" fill="#475569">B</text>
+  <rect x="570" y="240.6" width="50" height="19.4" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="595" y="232.6" text-anchor="middle" class="val" fill="#1e293b">1.11</text>
+  <text x="595" y="280" text-anchor="middle" class="tiny" fill="#475569">C</text>
+  <rect x="720" y="50" width="300" height="230" rx="12" fill="#f8fafc" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="870" y="78" text-anchor="middle" class="box-title" fill="#334155">③ 합으로 나눔 → 확률</text>
+  <line x1="745" y1="260" x2="995" y2="260" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="770" y="174.3" width="50" height="85.7" rx="4" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1"/>
+  <text x="795" y="166.3" text-anchor="middle" class="val" fill="#1e293b">0.66</text>
+  <text x="795" y="280" text-anchor="middle" class="tiny" fill="#475569">A</text>
+  <rect x="845" y="228.5" width="50" height="31.5" rx="4" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1"/>
+  <text x="870" y="220.5" text-anchor="middle" class="val" fill="#1e293b">0.24</text>
+  <text x="870" y="280" text-anchor="middle" class="tiny" fill="#475569">B</text>
+  <rect x="920" y="247.2" width="50" height="12.8" rx="4" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1"/>
+  <text x="945" y="239.2" text-anchor="middle" class="val" fill="#1e293b">0.10</text>
+  <text x="945" y="280" text-anchor="middle" class="tiny" fill="#475569">C</text>
+  <text x="870" y="302" text-anchor="middle" class="box-title" fill="#5b21b6">합 = 1.00</text>
+  <line x1="325" y1="165" x2="365" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <text x="345" y="150" text-anchor="middle" class="tiny" fill="#475569">e^z</text>
+  <line x1="675" y1="165" x2="715" y2="165" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <text x="695" y="150" text-anchor="middle" class="tiny" fill="#475569">÷ 합</text>
+  <text x="20" y="302" class="caption">점수 차이 1.0은 확률에서 e^1 ≈ 2.7배의 차이로 바뀝니다. 음수 점수도 양수가 되어 확률로 쓸 수 있습니다.</text>
+</svg>

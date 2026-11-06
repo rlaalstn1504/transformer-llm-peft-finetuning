@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="250" viewBox="0 0 960 250" role="img" aria-labelledby="title desc">
+  <title id="title">SFT 데이터 구성 흐름</title>
+  <desc id="desc">데이터를 불러와 대화 형식으로 변환하고, 학습·검증·평가 데이터로 나눈 다음 Chat Template과 토큰화를 거쳐 input_ids와 labels를 만든다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 22px; font-weight: 700; fill: #111827; }
+      .box-title { font-size: 15px; font-weight: 700; fill: #111827; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .small { font-size: 12px; font-weight: 500; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="960" height="250" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" class="title">SFT 데이터 구성 흐름 (2일차 2~3장)</text>
+
+  <rect x="65" y="70" width="150" height="110" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="140" y="108" text-anchor="middle" class="box-title">데이터 불러오기</text>
+  <text x="140" y="133" text-anchor="middle" class="tiny">CSV (질문·답변)</text>
+  <text x="140" y="162" text-anchor="middle" class="small">2.4절</text>
+  <line x1="215" y1="125" x2="233" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="235" y="70" width="150" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="310" y="108" text-anchor="middle" class="box-title">대화 형식 변환</text>
+  <text x="310" y="133" text-anchor="middle" class="tiny">user / assistant</text>
+  <text x="310" y="162" text-anchor="middle" class="small">2.5절</text>
+  <line x1="385" y1="125" x2="403" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="405" y="70" width="150" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="480" y="108" text-anchor="middle" class="box-title">데이터 분리</text>
+  <text x="480" y="133" text-anchor="middle" class="tiny">train·valid·test</text>
+  <text x="480" y="162" text-anchor="middle" class="small">2.6절</text>
+  <line x1="555" y1="125" x2="573" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="575" y="70" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="650" y="108" text-anchor="middle" class="box-title">Chat Template</text>
+  <text x="650" y="133" text-anchor="middle" class="tiny">특수 토큰 적용</text>
+  <text x="650" y="162" text-anchor="middle" class="small">3.2절</text>
+  <line x1="725" y1="125" x2="743" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+  <rect x="745" y="70" width="150" height="110" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="820" y="108" text-anchor="middle" class="box-title">토큰화·labels</text>
+  <text x="820" y="133" text-anchor="middle" class="tiny">답변만 학습(-100)</text>
+  <text x="820" y="162" text-anchor="middle" class="small">3.6절</text>
+
+  <text x="480" y="220" text-anchor="middle" class="small">이 데이터는 목표 페르소나로 미리 작성된 (질문, 답변) 쌍입니다. 형식을 모델이 학습할 수 있는 모양으로 바꾸는 과정을 봅니다.</text>
+</svg>

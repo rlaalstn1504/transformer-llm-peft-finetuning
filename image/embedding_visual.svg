@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="340" viewBox="0 0 900 340" role="img" aria-labelledby="title desc">
+  <title id="title">임베딩 조회(lookup): 토큰 ID로 벡터 행을 바로 꺼낸다</title>
+  <desc id="desc">정수 토큰 ID가 들어오면 임베딩 레이어라는 큰 표에서 그 번호에 해당하는 행을 곱셈 없이 그대로 꺼내 토큰 임베딩 벡터로 사용한다.</desc>
+  <defs>
+    <marker id="arrow-gray" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#64748b"/></marker>
+    <marker id="arrow-purple" markerWidth="7" markerHeight="7" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L9,4 z" fill="#7c3aed"/></marker>
+    <style>
+      text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'NanumGothic', sans-serif; }
+      .title { font-size: 20px; font-weight: 700; fill: #111827; }
+      .box-title { font-size: 14.5px; font-weight: 700; fill: #111827; }
+      .tiny { font-size: 11px; font-weight: 500; fill: #64748b; }
+      .small { font-size: 12.5px; font-weight: 600; fill: #334155; }
+      .mono { font-family: Consolas, 'D2Coding', monospace; font-size: 14px; font-weight: 700; fill: #1f2937; }
+      .note { font-size: 13px; font-weight: 500; fill: #6d28d9; }
+    </style>
+  </defs>
+  <rect width="900" height="340" fill="#ffffff"/>
+  <text x="450" y="32" text-anchor="middle" class="title">임베딩 조회(lookup): 토큰 ID로 벡터 행을 바로 꺼냅니다</text>
+
+  <!-- left: token ID -->
+  <rect x="40" y="130" width="130" height="80" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="105" y="162" text-anchor="middle" class="box-title">정수 ID</text>
+  <text x="105" y="190" text-anchor="middle" class="mono">1079</text>
+
+  <line x1="170" y1="170" x2="210" y2="170" stroke="#64748b" stroke-width="2.2" marker-end="url(#arrow-gray)"/>
+
+  <!-- middle: embedding table -->
+  <rect x="215" y="58" width="300" height="224" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="365" y="84" text-anchor="middle" class="box-title">임베딩 레이어</text>
+  <text x="365" y="102" text-anchor="middle" class="tiny">(어휘 수 × d_model)</text>
+
+  <g font-family="'Malgun Gothic','Noto Sans KR',sans-serif">
+    <rect x="245" y="118" width="240" height="22" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <rect x="245" y="140" width="240" height="22" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <rect x="245" y="162" width="240" height="26" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5"/>
+    <rect x="245" y="188" width="240" height="22" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <rect x="245" y="210" width="240" height="22" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+    <rect x="245" y="232" width="240" height="22" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.5"/>
+  </g>
+  <text x="365" y="156" text-anchor="middle" class="tiny" fill="#6d28d9" font-weight="700">1079번 행</text>
+  <text x="365" y="178" text-anchor="middle" class="small" fill="#5b21b6">...</text>
+
+  <path d="M 485 175 C 540 175, 540 170, 580 170" stroke="#7c3aed" stroke-width="2.2" fill="none" marker-end="url(#arrow-purple)"/>
+  <text x="520" y="150" text-anchor="middle" class="note">그 번호의 행을</text>
+  <text x="520" y="200" text-anchor="middle" class="note">그대로 꺼냄</text>
+
+  <!-- right: token embedding vector -->
+  <rect x="585" y="130" width="275" height="80" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="722" y="162" text-anchor="middle" class="box-title" fill="#5b21b6">토큰 임베딩 벡터</text>
+  <text x="722" y="190" text-anchor="middle" class="tiny">(1 × d_model)</text>
+
+  <text x="450" y="312" text-anchor="middle" class="tiny">행렬 곱셈이 아니라 번호로 바로 찾아오는 lookup 연산이라 빠릅니다.</text>
+</svg>

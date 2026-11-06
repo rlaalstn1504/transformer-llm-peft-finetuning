@@ -1,0 +1,23 @@
+# Python 3.10
+# 맥 전용 설치 파일입니다. Apple Silicon 맥과 인텔 맥 모두 이 파일 하나로 설치합니다.
+# requirements.txt와 다른 점은 세 가지입니다.
+# 1. NVIDIA GPU용 PyTorch 설치 주소(cu121)를 뺐습니다.
+# 2. PyTorch는 칩에 맞는 버전이 자동으로 설치됩니다. 인텔 맥용 PyTorch는 2.2.2가 마지막 버전입니다.
+# 3. 맥에서는 2일차 7장(QLoRA)을 건너뛰므로 bitsandbytes(4비트 양자화)를 뺐습니다. 인텔 맥용 설치 파일도 없습니다.
+torch==2.5.1; platform_machine == "arm64"
+torch==2.2.2; platform_machine == "x86_64"
+transformers==4.57.6
+tokenizers==0.22.2
+huggingface-hub==0.36.2
+peft==0.20.0
+trl==0.25.1
+datasets==4.8.4
+accelerate==1.14.0
+sentencepiece==0.2.1
+safetensors
+numpy==1.26.4
+pandas==2.3.3
+matplotlib==3.10.8
+koreanize-matplotlib==0.1.1
+ipykernel
+ipywidgets==8.1.8
